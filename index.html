@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>School Chess Club</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    header {
+      background: #333;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+
+    .logo {
+      width: 40px;
+      height: 40px;
+    }
+
+
+    h1 {
+      margin: 0 10px;
+      font-size: 1.5em;
+    }
+
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+
+    nav {
+      margin-top: 10px;
+    }
+
+
+    main {
+      padding: 20px;
+    }
+
+
+    section {
+      margin-bottom: 50px;
+    }
+
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+    }
+
+
+    .main-content, .side-content {
+      background-color: #f4f4f4;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+
+    form {
+      display: grid;
+      gap: 10px;
+    }
+
+
+    input, select, button {
+      padding: 8px;
+      font-size: 1em;
+      width: 100%;
+    }
+
+
+    button {
+      background-color: #333;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+
+    @media (max-width: 768px) {
+      .grid-container {
+        grid-template-columns: 1fr;
+      }
+
+
+      header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+
+      nav {
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+  <header>
+    <div style="display: flex; align-items: center;">
+      <img src="images/logo.png" alt="Chess Club Logo" class="logo">
+      <h1>School Chess Club</h1>
+    </div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#learn">Learn</a>
+      <a href="#signup">Sign Up</a>
+    </nav>
+  </header>
+
+
+  <main>
+    <!-- Home Section -->
+    <section id="home">
+      <div class="grid-container">
+        <div class="main-content">
+          <h2>Welcome to the School Chess Club</h2>
+          <p>Join us every Thursday after school to improve your chess skills and compete with your friends!</p>
+        </div>
+        <div class="side-content">
+          <h3>Upcoming Events</h3>
+          <ul>
+            <li>Chess Tournament - Sept 15</li>
+            <li>Simul Game with a Master - Oct 2</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Learn Section -->
+    <section id="learn">
+      <div class="grid-container">
+        <div class="main-content">
+          <h2>How to Play Chess</h2>
+          <p>Learn the basics of chess: how each piece moves, the rules of the game, and simple strategies.</p>
+          <ul>
+            <li><a href="https://www.chess.com/learn-how-to-play-chess" target="_blank">Chess.com Basics</a></li>
+            <li><a href="https://lichess.org/learn" target="_blank">Lichess Learn</a></li>
+          </ul>
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/fKxG8KjH1Qg" title="Learn Chess Basics" allowfullscreen></iframe>
+        </div>
+        <div class="side-content">
+          <h3>Tips for Beginners</h3>
+          <ul>
+            <li>Control the center</li>
+            <li>Develop your pieces early</li>
+            <li>Protect your king</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Sign Up Section -->
+    <section id="signup">
+      <div class="grid-container">
+        <div class="main-content">
+          <h2>Join the Club</h2>
+          <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+
+            <label for="grade">Grade:</label>
+            <input type="text" id="grade" name="grade" required>
+
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+
+            <label for="experience">Experience Level:</label>
+            <select id="experience" name="experience">
+              <option>Beginner</option>
+              <option>Intermediate</option>
+              <option>Advanced</option>
+            </select>
+
+
+            <button type="submit">Sign Up</button>
+          </form>
+        </div>
+        <div class="side-content">
+          <h3>Why Join?</h3>
+          <p>Make new friends, build your brain, and have fun with strategy!</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <footer>
+    <p>&copy; 2025 School Chess Club</p>
+  </footer>
+
+
+</body>
+</html>
