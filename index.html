@@ -2,224 +2,210 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>School Chess Club</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fake Friendships</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-
-    header {
-      background: #333;
-      color: white;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-
-
-    .logo {
-      width: 40px;
-      height: 40px;
-    }
-
-
-    h1 {
-      margin: 0 10px;
-      font-size: 1.5em;
-    }
-
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 10px;
-    }
-
-
-    nav {
-      margin-top: 10px;
-    }
-
-
-    main {
-      padding: 20px;
-    }
-
-
-    section {
-      margin-bottom: 50px;
-    }
-
-
-    .grid-container {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 20px;
-    }
-
-
-    .main-content, .side-content {
-      background-color: #f4f4f4;
-      padding: 20px;
-      border-radius: 8px;
-    }
-
-
-    form {
-      display: grid;
-      gap: 10px;
-    }
-
-
-    input, select, button {
-      padding: 8px;
-      font-size: 1em;
-      width: 100%;
-    }
-
-
-    button {
-      background-color: #333;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-
-
-    footer {
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 10px;
-    }
-
-
-    @media (max-width: 768px) {
-      .grid-container {
-        grid-template-columns: 1fr;
-      }
-
-
-      header {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-
-      nav {
-        margin: 10px 0;
-      }
-    }
+    body { font-family: 'Lexend', sans-serif; margin:0; padding:0; background: #eaf3f7; }
+    nav { background: #e8735f; padding: 1rem; display: flex; justify-content: center; gap: 2rem; }
+    nav a { color: white; text-decoration: none; font-weight: 600; cursor: pointer; }
+    nav a:hover { text-decoration: underline; }
+    section { display: none; padding: 2rem; max-width: 1000px; margin: 0 auto; }
+    section.active { display: block; }
+    h1 { color: #d63031; text-align: center; margin-bottom: 1rem; text-shadow: 1px 1px #00000050; }
+    .signs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+    .sign-card { background: linear-gradient(135deg, #f6d365, #fda085); padding: 1rem; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: transform 0.3s, box-shadow 0.3s; }
+    .sign-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+    aside { background: #ffeaa7; padding: 1rem; border-radius: 10px; margin-top: 1rem; }
+    ul { margin-left: 1.5rem; }
+    footer { background: #2d3436; color: #fff; text-align: center; padding: 1rem; margin-top: 2rem; }
   </style>
 </head>
 <body>
 
+<nav>
+  <a onclick="showSection('home')">Home</a>
+  <a onclick="showSection('signs')">Signs</a>
+  <a onclick="showSection('effects')">Effects</a>
+  <a onclick="showSection('research')">Research</a>
+  <a onclick="showSection('help')">Help & Resources</a>
+</nav>
 
-  <header>
-    <div style="display: flex; align-items: center;">
-      <img src="images/logo.png" alt="Chess Club Logo" class="logo">
-      <h1>School Chess Club</h1>
+<section id="home" class="active">
+  <h1>💞 Welcome to Fake Friendships Awareness</h1>
+  
+  <!-- Hero Banner -->
+  <div style="background: linear-gradient(135deg, #f6d365, #fda085); 
+              padding: 2rem; border-radius: 15px; 
+              box-shadow: 0 6px 15px rgba(0,0,0,0.2); 
+              text-align: center; color: #2d3436; margin-bottom: 2rem;">
+    <h2 style="margin-bottom: 1rem;">Friendship should feel safe, kind, and uplifting 💕</h2>
+    <p style="font-size: 1.1rem; max-width: 700px; margin: 0 auto;">
+      Sometimes, relationships don’t feel balanced or supportive. This space helps you gently explore signs of fake friendships, their effects, and how to focus on healthy, positive connections. 🌸
+    </p>
+  </div>
+
+  <!-- Intro Grid -->
+  <div class="signs-grid">
+    <div class="sign-card" style="background: linear-gradient(135deg, #a1c4fd, #c2e9fb);">
+      <strong>🌼 What We Share</strong>
+      <p>Kind insights about friendships — recognizing when something feels off and appreciating real connections.</p>
     </div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#learn">Learn</a>
-      <a href="#signup">Sign Up</a>
-    </nav>
-  </header>
+    <div class="sign-card" style="background: linear-gradient(135deg, #ffecd2, #fcb69f);">
+      <strong>🌈 Gentle Guidance</strong>
+      <p>Simple, supportive advice that feels caring, not heavy. You’re not alone in this journey. 💖</p>
+    </div>
+    <div class="sign-card" style="background: linear-gradient(135deg, #d4fc79, #96e6a1);">
+      <strong>✨ Positive Focus</strong>
+      <p>Encouragement to surround yourself with people who cheer for you and make you feel at ease. 🌟</p>
+    </div>
+  </div>
 
+  <!-- Closing Note -->
+  <aside style="background:#ffeaa7; margin-top:2rem;">
+    <h3>🌸 A Gentle Reminder</h3>
+    <p>Friendship should bring lightness to your heart. Explore the pages above to learn, reflect, and grow at your own pace. 💕</p>
+  </aside>
+</section>
 
-  <main>
-    <!-- Home Section -->
-    <section id="home">
-      <div class="grid-container">
-        <div class="main-content">
-          <h2>Welcome to the School Chess Club</h2>
-          <p>Join us every Thursday after school to improve your chess skills and compete with your friends!</p>
-        </div>
-        <div class="side-content">
-          <h3>Upcoming Events</h3>
-          <ul>
-            <li>Chess Tournament - Sept 15</li>
-            <li>Simul Game with a Master - Oct 2</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+<section id="signs">
+  <h1>Signs of Fake Friendships</h1>
+  <div class="signs-grid">
+    <div class="sign-card" style="background: linear-gradient(135deg, #fbc2eb, #a6c1ee);">
+      <strong>1. One-Sided Effort</strong>
+      <p>You might notice you’re often the one making plans or reaching out. A true friend happily puts in effort too. 🌸</p>
+    </div>
+    <div class="sign-card" style="background: linear-gradient(135deg, #ffecd2, #fcb69f);">
+      <strong>2. Little Support</strong>
+      <p>Sometimes they don’t cheer for your wins or may not be present during challenges. Real friends celebrate and comfort. 🎉</p>
+    </div>
+    <div class="sign-card" style="background: linear-gradient(135deg, #d4fc79, #96e6a1);">
+      <strong>3. Conditional Kindness</strong>
+      <p>They may act friendly in some settings but feel distant in private. Healthy friendships feel warm and steady everywhere. 🌼</p>
+    </div>
+    <div class="sign-card" style="background: linear-gradient(135deg, #fddb92, #d1fdff);">
+      <strong>4. Trust Feels Shaky</strong>
+      <p>They might sometimes share things you wished stayed private. With kind friends, you can relax and feel safe. 💖</p>
+    </div>
+    <div class="sign-card" style="background: linear-gradient(135deg, #f6d365, #fda085);">
+      <strong>5. Uneven Listening</strong>
+      <p>You often listen to their worries, but they don’t ask much about yours. Great friendships are caring in both directions. 🤝</p>
+    </div>
+    <div class="sign-card" style="background: linear-gradient(135deg, #cfd9df, #e2ebf0);">
+      <strong>6. Gentle Put-Downs</strong>
+      <p>They may make “jokes” that don’t feel kind or try to one-up you. True friends lift you higher instead. 🌈</p>
+    </div>
+    <div class="sign-card" style="background: linear-gradient(135deg, #d4fc79, #96e6a1);">
+      <strong>7. Intuition</strong>
+      <p>If you feel uneasy or not fully yourself, it’s okay to listen to that inner voice. Healthy friendships feel safe and easy. 🌟</p>
+    </div>
+  </div>
+  <aside>
+    <h3>Gentle Reminder</h3>
+    <p>It’s normal for every friendship to have ups and downs. What matters is feeling <strong>respected, cared for, and comfortable</strong> most of the time. 💕</p>
+  </aside>
+</section>
+<section id="effects">
+  <h1>Effects of Fake Friendships</h1>
+  <div class="signs-grid">
+    <div class="sign-card" style="background: linear-gradient(135deg, #fbc2eb, #a6c1ee);">
+      <strong>Emotional Wellbeing</strong>
+      <p>Sometimes fake friendships can leave you feeling a bit drained or unsure about yourself. It’s normal to want friends who make you feel comfortable and valued.</p>
+    </div>
+    <div class="sign-card" style="background: linear-gradient(135deg, #ffecd2, #fcb69f);">
+      <strong>Energy Levels</strong>
+      <p>You might notice feeling tired after spending time with someone who isn’t supportive. Real friends usually leave you feeling lighter and happier.</p>
+    </div>
+    <div class="sign-card" style="background: linear-gradient(135deg, #d4fc79, #96e6a1);">
+      <strong>Confidence</strong>
+      <p>If you often feel overlooked, your confidence might take a dip. With kind and genuine friends, you’ll notice your self-worth growing stronger.</p>
+    </div>
+    <div class="sign-card" style="background: linear-gradient(135deg, #cfd9df, #e2ebf0);">
+      <strong>Trust</strong>
+      <p>Trust can feel shaky if you’ve been let down. The good news is, healthy friendships help rebuild that sense of safety over time.</p>
+    </div>
+    <div class="sign-card" style="background: linear-gradient(135deg, #fddb92, #d1fdff);">
+      <strong>Balance</strong>
+      <p>Spending too much energy on a one-sided friendship may feel unbalanced. Finding supportive friends restores harmony in your social life.</p>
+    </div>
+  </div>
+  <aside>
+    <h3>Friendly Reminder</h3>
+    <p>Everyone deserves friends who make them feel <strong>safe, valued, and supported</strong>. 🌼</p>
+  </aside>
+</section>
 
+<section id="research">
+  <h1>Research</h1>
+  <div class="signs-grid">
+    <div class="sign-card" style="background: linear-gradient(135deg, #cfd9df, #e2ebf0);">
+      <strong>Friendship & Happiness</strong>
+      <p>Studies show that kind, genuine friendships boost happiness and make life feel more meaningful. Being around supportive people encourages growth and joy.</p>
+    </div>
+    <div class="sign-card" style="background: linear-gradient(135deg, #d4fc79, #96e6a1);">
+      <strong>Positive Support</strong>
+      <p>Research highlights that when friends cheer us on, our confidence grows. Encouragement from real friends can inspire us to try new things.</p>
+    </div>
+    <div class="sign-card" style="background: linear-gradient(135deg, #ffecd2, #fcb69f);">
+      <strong>Feeling Understood</strong>
+      <p>When friends truly listen, our stress levels decrease. Even a short, kind conversation can make a big difference in how supported we feel.</p>
+    </div>
+    <div class="sign-card" style="background: linear-gradient(135deg, #fbc2eb, #a6c1ee);">
+      <strong>Belonging</strong>
+      <p>Belonging to a supportive group helps us feel safe and connected. Genuine friendships remind us that we’re never alone on our journey.</p>
+    </div>
+    <div class="sign-card" style="background: linear-gradient(135deg, #fddb92, #d1fdff);">
+      <strong>Growth Together</strong>
+      <p>Research shows that healthy friendships encourage learning, trying new experiences, and building stronger skills together.</p>
+    </div>
+  </div>
+  <aside>
+    <h3>Did You Know?</h3>
+    <p>Having even <strong>one good friend</strong> makes life feel brighter and more secure. 🌈</p>
+  </aside>
+</section>
 
-    <!-- Learn Section -->
-    <section id="learn">
-      <div class="grid-container">
-        <div class="main-content">
-          <h2>How to Play Chess</h2>
-          <p>Learn the basics of chess: how each piece moves, the rules of the game, and simple strategies.</p>
-          <ul>
-            <li><a href="https://www.chess.com/learn-how-to-play-chess" target="_blank">Chess.com Basics</a></li>
-            <li><a href="https://lichess.org/learn" target="_blank">Lichess Learn</a></li>
-          </ul>
-          <iframe width="100%" height="315" src="https://www.youtube.com/embed/fKxG8KjH1Qg" title="Learn Chess Basics" allowfullscreen></iframe>
-        </div>
-        <div class="side-content">
-          <h3>Tips for Beginners</h3>
-          <ul>
-            <li>Control the center</li>
-            <li>Develop your pieces early</li>
-            <li>Protect your king</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+<section id="help">
+  <h1>Help & Resources</h1>
+  <div class="signs-grid">
+    <div class="sign-card" style="background: linear-gradient(135deg, #fddb92, #d1fdff);">
+      <strong>Talk to Someone You Trust</strong>
+      <p>It helps to share your feelings with a kind friend, family member, or mentor. Talking things out often brings relief and clarity. 💬</p>
+    </div>
+    <div class="sign-card" style="background: linear-gradient(135deg, #ffecd2, #fcb69f);">
+      <strong>Take Gentle Steps</strong>
+      <p>It’s okay to slowly step back from people who make you feel uneasy. Little steps toward healthy friendships make a big difference.</p>
+    </div>
+    <div class="sign-card" style="background: linear-gradient(135deg, #d4fc79, #96e6a1);">
+      <strong>Self-Care</strong>
+      <p>Spending time on hobbies, rest, or journaling can lift your mood. Caring for yourself helps attract people who care for you too. 🌸</p>
+    </div>
+    <div class="sign-card" style="background: linear-gradient(135deg, #fbc2eb, #a6c1ee);">
+      <strong>Books & Resources</strong>
+      <p>Gentle reads like <em>"The Gifts of Imperfection"</em> by Brené Brown encourage self-love and remind us how to set kind boundaries.</p>
+    </div>
+    <div class="sign-card" style="background: linear-gradient(135deg, #cfd9df, #e2ebf0);">
+      <strong>Supportive Communities</strong>
+      <p>Friendly online spaces or local groups can help you connect with others who are also looking for genuine friendships.</p>
+    </div>
+    <div class="sign-card" style="background: linear-gradient(135deg, #f6d365, #fda085);">
+      <strong>Kind Reminder</strong>
+      <p>It’s perfectly okay to move on from friendships that don’t feel right. The right people will always make you feel welcome. 🌼</p>
+    </div>
+  </div>
+</section>
 
+<footer>
+  We’re. all about connections. (˶ᵔ ᵕ ᵔ˶)
+</footer>
 
-    <!-- Sign Up Section -->
-    <section id="signup">
-      <div class="grid-container">
-        <div class="main-content">
-          <h2>Join the Club</h2>
-          <form>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-
-
-            <label for="grade">Grade:</label>
-            <input type="text" id="grade" name="grade" required>
-
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-
-            <label for="experience">Experience Level:</label>
-            <select id="experience" name="experience">
-              <option>Beginner</option>
-              <option>Intermediate</option>
-              <option>Advanced</option>
-            </select>
-
-
-            <button type="submit">Sign Up</button>
-          </form>
-        </div>
-        <div class="side-content">
-          <h3>Why Join?</h3>
-          <p>Make new friends, build your brain, and have fun with strategy!</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-
-  <footer>
-    <p>&copy; 2025 School Chess Club</p>
-  </footer>
-
+<script>
+  function showSection(id) {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(sec => sec.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+</script>
 
 </body>
 </html>
