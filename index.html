@@ -13,7 +13,6 @@
       scroll-behavior: smooth; /* Smooth scrolling for nav links */
     }
 
-
     header {
       background: #333;
       color: white;
@@ -24,19 +23,20 @@
       flex-wrap: wrap;
     }
 
-
     .logo {
-      width: 40px;
-      height: 40px;
+      width: 70px;
+      height: 70px;
       border-radius: 8px;
     }
-
 
     h1 {
       margin: 0 10px;
       font-size: 1.5em;
     }
 
+    nav {
+      margin-top: 10px;
+    }
 
     nav a {
       color: white;
@@ -44,25 +44,20 @@
       margin: 0 10px;
       transition: color 0.3s;
     }
-    
 
-
-     nav a:hover,
+    nav a:hover,
     nav a:focus {
       text-decoration: underline;
       color: #ffcc00;
     }
 
-
     main {
       padding: 20px;
     }
 
-
     section {
       margin-bottom: 50px;
     }
-
 
     .grid-container {
       display: grid;
@@ -70,19 +65,16 @@
       gap: 20px;
     }
 
-
     .main-content, .side-content {
       background-color: #f4f4f4;
       padding: 20px;
       border-radius: 8px;
     }
 
-
     form {
       display: grid;
       gap: 10px;
     }
-
 
     input, select, button {
       padding: 8px;
@@ -100,10 +92,9 @@
       transition: background-color 0.3s;
     }
 
-  button:hover {
+    button:hover {
       background-color: #555;
     }
-
 
     footer {
       background-color: #333;
@@ -132,13 +123,11 @@
         grid-template-columns: 1fr;
       }
 
-
       header {
         flex-direction: column;
         align-items: center;
         text-align: center;
       }
-
 
       nav {
         margin: 10px 0;
@@ -148,19 +137,17 @@
 </head>
 <body>
 
-
   <header>
     <div style="display: flex; align-items: center;">
-      <img src="images/Chess logo for the CSC.jpg" alt="Image" height="70" width="70">    
+      <img src="images/Chess logo for the CSC.jpg" alt="Chess Club Logo" class="logo">    
       <h1>School Chess Club</h1>
     </div>
-    <nav>
+    <nav aria-label="Main navigation">
       <a href="#home">Home</a>
       <a href="#learn">Learn</a>
       <a href="#signup">Sign Up</a>
     </nav>
   </header>
-
 
   <main>
     <!-- Home Section -->
@@ -179,7 +166,6 @@
         </div>
       </div>
     </section>
-
 
     <!-- Learn Section -->
     <section id="learn">
@@ -204,7 +190,6 @@
       </div>
     </section>
 
-
     <!-- Sign Up Section -->
     <section id="signup">
       <div class="grid-container">
@@ -214,14 +199,11 @@
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
 
-
             <label for="grade">Grade:</label>
             <input type="text" id="grade" name="grade" required>
 
-
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
-
 
             <label for="experience">Experience Level:</label>
             <select id="experience" name="experience">
@@ -229,7 +211,6 @@
               <option>Intermediate</option>
               <option>Advanced</option>
             </select>
-
 
             <button type="submit">Sign Up</button>
           </form>
@@ -242,11 +223,9 @@
     </section>
   </main>
 
-
   <footer>
     <p>&copy; 2025 School Chess Club</p>
   </footer>
-
 
 </body>
 </html>
