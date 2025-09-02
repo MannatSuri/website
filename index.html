@@ -1,236 +1,487 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>School Chess Club</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    /* General Styles */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      scroll-behavior: smooth; /* smooth scrolling */
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>School Chess Club</title>
+<style>
+/* --- General Styles --- */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+body { background: #f0f0f0; color: #333; }
+header { background: #222; color: #fff; padding: 20px 0; text-align: center; }
+nav { display: flex; justify-content: center; gap: 30px; margin-top: 10px; }
+nav button { background: none; color: #fff; border: 2px solid #fff; padding: 8px 15px; font-weight: bold; border-radius: 5px; cursor: pointer; transition: 0.3s; }
+nav button:hover { background: #fff; color: #222; }
 
-    /* Sticky header */
-    header {
-      background: #333;
-      color: white;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      position: sticky; 
-      top: 0;
-      z-index: 1000;
-    }
+/* --- Sections --- */
+section { padding: 50px 20px; max-width: 1200px; margin: 0 auto; display: none; }
 
-    .logo {
-      width: 70px;
-      height: 70px;
-      border-radius: 8px;
-    }
+/* Home Section */
+#home { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; }
+#home h1 { font-size: 3rem; color: #222; }
+#home p { font-size: 1.2rem; max-width: 600px; }
+#home button { padding: 15px 30px; font-size: 1.1rem; border-radius: 10px; border: none; cursor: pointer; background: #222; color: #fff; transition: 0.3s; }
+#home button:hover { background: #555; }
 
-    h1 {
-      margin: 0 10px;
-      font-size: 1.5em;
-    }
+/* Learn Section */
+#learn h2 { text-align: center; margin-bottom: 30px; }
+.learn-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.learn-card { background: #fff; padding: 20px; border-radius: 10px; transition: transform 0.3s, box-shadow 0.3s; }
+.learn-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 
-    nav {
-      margin-top: 10px;
-    }
+/* Sign Up Section */
+#signup h2 { text-align: center; margin-bottom: 30px; }
+.signup-form { background: #fff; padding: 40px; border-radius: 15px; max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+.signup-form input, .signup-form button { padding: 15px; font-size: 1rem; border-radius: 8px; border: 1px solid #ccc; }
+.signup-form button { background-color: #222; color: #fff; cursor: pointer; transition: 0.3s; }
+.signup-form button:hover { background-color: #555; }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 10px;
-      transition: color 0.3s;
-    }
-
-    nav a:hover,
-    nav a:focus {
-      text-decoration: underline;
-      color: #ffcc00;
-    }
-
-    main {
-      padding: 20px;
-    }
-
-    section {
-      margin-bottom: 50px;
-      scroll-margin-top: 90px; 
-    }
-
-    .grid-container {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 20px;
-    }
-
-    .main-content, .side-content {
-      background-color: #f4f4f4;
-      padding: 20px;
-      border-radius: 8px;
-    }
-
-    form {
-      display: grid;
-      gap: 10px;
-    }
-
-    input, select, button {
-      padding: 8px;
-      font-size: 1em;
-      width: 100%;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-    }
-
-    button {
-      background-color: #333;
-      color: white;
-      border: none;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    button:hover {
-      background-color: #555;
-    }
-
-    footer {
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 10px;
-    }
-
-    .side-content ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .side-content li::before {
-      content: "♟ ";
-      color: #333;
-    }
-
-    iframe {
-      max-width: 100%;
-      border-radius: 8px;
-    }
-
-    @media (max-width: 768px) {
-      .grid-container {
-        grid-template-columns: 1fr;
-      }
-
-      header {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      nav {
-        margin: 10px 0;
-      }
-    }
-  </style>
+/* Footer */
+footer { background: #222; color: #fff; text-align: center; padding: 20px 0; margin-top: 40px; }
+</style>
 </head>
 <body>
 
-  <header>
-    <div style="display: flex; align-items: center;">
-      <img src="images/Chess logo for the CSC.jpg" alt="Chess Club Logo" class="logo">    
-      <h1>School Chess Club</h1>
-    </div>
-    <nav aria-label="Main navigation">
-      <a href="#home">Home</a>
-      <a href="#learn">Learn</a>
-      <a href="#signup">Sign Up</a>
+<header>
+    <h1>School Chess Club</h1>
+    <nav>
+        <button onclick="showPage('home')">Home</button>
+        <button onclick="showPage('learn')">Learn More</button>
+        <button onclick="showPage('signup')">Sign Up</button>
     </nav>
-  </header>
+</header>
 
-  <main>
-    <!-- Home Section -->
-    <section id="home">
-      <div class="grid-container">
-        <div class="main-content">
-          <h2>Welcome to the School Chess Club</h2>
-          <p>Join us every Thursday after school to improve your chess skills and compete with your friends!</p>
-        </div>
-        <div class="side-content">
-          <h3>Upcoming Events</h3>
-          <ul>
-            <li>Chess Tournament - Sept 15</li>
-            <li>Simul Game with a Master - Oct 2</li>
-          </ul>
-        </div>
+<section id="home" style="
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f7fbcb, #ffc6ed);
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+">
+
+  <!-- Left Decorative Image -->
+  <img src="images/chess img.jpeg" style="
+    position: absolute;
+    right: 100px;
+    top: 20%;
+    width: 350px;
+    opacity: 0.9;
+    border-radius: 3ch;
+  "/>
+
+  <!-- Right Decorative Image -->
+  <img src="images/chess img 2.jpeg" style="
+    position: absolute;
+    right: 100px;
+    bottom: 20%;
+    width: 350px;
+    opacity: 0.9;
+    border-radius: 3ch;
+  "/>
+
+  <!-- Main Content -->
+  <div style="
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 40px;
+    max-width: 700px;
+    width: 100%;
+    z-index: 2;
+  ">
+
+    <h1 style="font-size: 4rem; color: #004d40; line-height: 1.2; text-shadow: 2px 2px 6px rgba(0,0,0,0.1);">
+      Welcome to the School Chess Club!
+    </h1>
+
+    <p style="font-size: 1.5rem; color: #00695c; line-height: 1.6; max-width: 600px;">
+      Learn, play, and compete in a friendly environment. Sharpen your mind, challenge yourself, and connect with fellow chess enthusiasts!
+    </p>
+
+    <!-- Cards -->
+    <div style="display: flex; flex-direction: column; gap: 25px; width: 100%;">
+      <div class="home-card">
+        <h3>Weekly Training</h3>
+        <p>Improve your openings, tactics, and endgames with guided training sessions.</p>
       </div>
-    </section>
-
-    <!-- Learn Section -->
-    <section id="learn">
-      <div class="grid-container">
-        <div class="main-content">
-          <h2>How to Play Chess</h2>
-          <p>Learn the basics of chess: how each piece moves, the rules of the game, and simple strategies.</p>
-          <ul>
-            <li><a href="https://www.chess.com/learn-how-to-play-chess" target="_blank">Chess.com Basics</a></li>
-            <li><a href="https://lichess.org/learn" target="_blank">Lichess Learn</a></li>
-          </ul>
-          <iframe width="100%" height="315" src="https://www.youtube.com/embed/fKxG8KjH1Qg" title="Learn Chess Basics" allowfullscreen></iframe>
-        </div>
-        <div class="side-content">
-          <h3>Tips for Beginners</h3>
-          <ul>
-            <li>Control the center</li>
-            <li>Develop your pieces early</li>
-            <li>Protect your king</li>
-          </ul>
-        </div>
+      <div class="home-card">
+        <h3>Tournaments</h3>
+        <p>Participate in friendly competitions and test your skills against others.</p>
       </div>
-    </section>
-
-    <!-- Sign Up Section -->
-    <section id="signup">
-      <div class="grid-container">
-        <div class="main-content">
-          <h2>Join the Club</h2>
-          <form>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="grade">Grade:</label>
-            <input type="text" id="grade" name="grade" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="experience">Experience Level:</label>
-            <select id="experience" name="experience">
-              <option>Beginner</option>
-              <option>Intermediate</option>
-              <option>Advanced</option>
-            </select>
-
-            <button type="submit">Sign Up</button>
-          </form>
-        </div>
-        <div class="side-content">
-          <h3>Why Join?</h3>
-          <p>Make new friends, build your brain, and have fun with strategy!</p>
-        </div>
+      <div class="home-card">
+        <h3>Friendly Community</h3>
+        <p>Meet fellow chess enthusiasts in a welcoming and supportive environment.</p>
       </div>
-    </section>
-  </main>
+    </div>
 
-  <footer>
-    <p>&copy; 2025 School Chess Club</p>
-  </footer>
+    <button onclick="showPage('signup')" class="home-btn">Join Now</button>
+  </div>
+</section>
+
+<style>
+  /* Cards */
+  .home-card {
+    background: linear-gradient(145deg, #ffffff, #e0f7fa);
+    padding: 25px 35px;
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    cursor: pointer;
+  }
+  .home-card h3 {
+    color: #004d40;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+  }
+  .home-card p {
+    color: #004d40;
+    line-height: 1.6;
+  }
+  .home-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+    background: linear-gradient(145deg, #bb5bfe, #bfcafc);
+  }
+
+  /* Button */
+  .home-btn {
+    margin-top: 40px;
+    padding: 20px 50px;
+    font-size: 1.4rem;
+    border-radius: 25px;
+    border: none;
+    background: linear-gradient(45deg, #004d40, #00796b);
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  }
+  .home-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    background: linear-gradient(45deg, #00796b, #004d40);
+  }
+
+  /* Text hover effect */
+  #home div:hover h3 {
+    color: #00796b;
+  }
+</style>
+
+<section id="learn" style="background: #e0f7fa; padding: 100px 20px; box-sizing: border-box;">
+
+  <!-- Title -->
+  <div style="text-align: center; margin-bottom: 80px;">
+    <h1 style="font-size: 3rem; color: #004d40;">Learn More About Our Chess Club</h1>
+    <p style="font-size: 1.4rem; color: #00695c; max-width: 850px; margin: 20px auto; line-height: 1.8;">
+      Explore our structured training, tournaments, community, resources, and more! Our club is perfect for players of all skill levels.
+    </p>
+  </div>
+
+  <!-- Section 1: Club Benefits -->
+  <div style="max-width: 1200px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-bottom: 100px;">
+    <div style="background: #ffffff; padding: 40px; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">
+      <h3 style="color: #004d40; font-size: 1.8rem; margin-bottom: 15px;">Structured Training</h3>
+      <p style="color: #555; line-height: 1.8;">Weekly sessions covering openings, middle-game strategies, endgames, and tactical exercises.</p>
+    </div>
+    <div style="background: #fff3e0; padding: 40px; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">
+      <h3 style="color: #e65100; font-size: 1.8rem; margin-bottom: 15px;">Tournaments</h3>
+      <p style="color: #555; line-height: 1.8;">Friendly competitions and inter-school events that build confidence and skill.</p>
+    </div>
+    <div style="background: #e8f5e9; padding: 40px; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">
+      <h3 style="color: #1b5e20; font-size: 1.8rem; margin-bottom: 15px;">Community & Networking</h3>
+      <p style="color: #555; line-height: 1.8;">Meet chess lovers, form teams, and build lifelong friendships through chess.</p>
+    </div>
+    <div style="background: #ffebee; padding: 40px; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">
+      <h3 style="color: #b71c1c; font-size: 1.8rem; margin-bottom: 15px;">Resources</h3>
+      <p style="color: #555; line-height: 1.8;">Access books, puzzles, and study material to level up your understanding of the game.</p>
+    </div>
+  </div>
+
+  <!-- Section 2: Video Tutorials -->
+  <div style="max-width: 1200px; margin: auto; margin-bottom: 100px;">
+    <h2 style="color: #004d40; font-size: 2.5rem; text-align: center; margin-bottom: 50px;">Watch Tutorials & Matches</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px;">
+      <div style="border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/OCSbzArwB10?si=LyavcW39s_PzhTTu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div style="border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/fGFl4GjVvrA?si=Ul8t_W_wvQMQx-YD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div style="border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/6IegDENuxU4?si=ZLTH8Y0ei1xNf5Qc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+<!-- Section 3: Quiz Game -->
+<div style="background: #fff3e0; padding: 80px 20px; margin-bottom: 100px;">
+  <div style="text-align: center; max-width: 900px; margin: auto;">
+    <h2 style="color: #e65100; font-size: 2.5rem; margin-bottom: 30px;">Chess Knowledge Quiz</h2>
+    <p style="color: #555; font-size: 1.3rem; line-height: 1.8;">
+      Test your chess knowledge! Select the correct answer for each question.
+    </p>
+  </div>
+
+  <div id="quiz-container" style="max-width:600px; margin:40px auto; background:#fff; padding:30px; border-radius:20px; box-shadow:0 8px 25px rgba(0,0,0,0.15); transition:0.3s;">
+    <p id="question" style="font-weight:700; font-size:1.3rem; margin-bottom:20px;"></p>
+    <div id="options" style="display:flex; flex-direction:column; gap:10px;"></div>
+    <p id="feedback" style="text-align:center; font-weight:600; margin-top:15px;"></p>
+    <div style="text-align:center; margin-top:20px;">
+      <button id="next-btn" style="padding:8px 16px; border:none; background:#e65100; color:white; border-radius:8px; cursor:pointer;">Next ▶</button>
+    </div>
+    <p id="score" style="text-align:center; font-weight:700; margin-top:15px;"></p>
+  </div>
+</div>
+
+<script>
+  // Quiz questions array
+  const quizQuestions = [
+    {
+      question: "What is the only piece that can jump over others?",
+      options: ["Bishop", "Knight", "Rook", "Queen"],
+      answer: "Knight"
+    },
+    {
+      question: "Which move is called 'castling'?",
+      options: [
+        "Moving the king two squares towards a rook",
+        "Moving the pawn two squares forward",
+        "Capturing an opponent's piece",
+        "Promoting a pawn"
+      ],
+      answer: "Moving the king two squares towards a rook"
+    },
+    {
+      question: "How many squares are on a chessboard?",
+      options: ["64", "72", "81", "100"],
+      answer: "64"
+    },
+    {
+      question: "Which piece is the most powerful?",
+      options: ["Queen", "Rook", "Bishop", "Knight"],
+      answer: "Queen"
+    },
+    {
+      question: "What is 'en passant'?",
+      options: [
+        "A type of check",
+        "A pawn capturing move",
+        "A castling move",
+        "A checkmate pattern"
+      ],
+      answer: "A pawn capturing move"
+    }
+  ];
+
+  // Shuffle questions on each page load
+  function shuffle(array){
+    for(let i = array.length - 1; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  let questions = shuffle([...quizQuestions]);
+  let currentQuestion = 0;
+  let score = 0;
+
+  const questionEl = document.getElementById("question");
+  const optionsEl = document.getElementById("options");
+  const feedbackEl = document.getElementById("feedback");
+  const scoreEl = document.getElementById("score");
+  const nextBtn = document.getElementById("next-btn");
+
+  function loadQuestion() {
+    feedbackEl.innerText = "";
+    optionsEl.innerHTML = "";
+    if(currentQuestion >= questions.length){
+      questionEl.innerText = "🎉 Quiz Completed!";
+      scoreEl.innerText = `Your score: ${score} / ${questions.length}`;
+      nextBtn.style.display = "none";
+      return;
+    }
+    const q = questions[currentQuestion];
+    questionEl.innerText = q.question;
+
+    q.options.forEach(opt => {
+      const btn = document.createElement("button");
+      btn.innerText = opt;
+      btn.style.padding = "10px 15px";
+      btn.style.border = "none";
+      btn.style.borderRadius = "10px";
+      btn.style.cursor = "pointer";
+      btn.style.background = "#fff";
+      btn.style.boxShadow = "0 4px 10px rgba(0,0,0,0.1)";
+      btn.onmouseover = ()=>{ btn.style.background="#f0f0f0"; };
+      btn.onmouseout = ()=>{ btn.style.background="#fff"; };
+      btn.onclick = () => checkAnswer(opt, btn);
+      optionsEl.appendChild(btn);
+    });
+  }
+
+  function checkAnswer(selected, btn) {
+    const correct = questions[currentQuestion].answer;
+    const allBtns = optionsEl.querySelectorAll("button");
+    allBtns.forEach(b => b.disabled = true);
+
+    if(selected === correct){
+      feedbackEl.innerText = "✅ Correct!";
+      btn.style.background = "#4caf50";
+      btn.style.color = "#fff";
+      score++;
+    } else {
+      feedbackEl.innerText = `❌ Wrong! Correct answer: ${correct}`;
+      btn.style.background = "#f44336";
+      btn.style.color = "#fff";
+      // Highlight the correct answer
+      allBtns.forEach(b => {
+        if(b.innerText === correct){
+          b.style.background = "#4caf50";
+          b.style.color = "#fff";
+        }
+      });
+    }
+    currentQuestion++;
+  }
+
+  nextBtn.addEventListener("click", loadQuestion);
+
+  // Start quiz
+  loadQuestion();
+</script>
+  <!-- Section 4: Fun Facts Grid -->
+  <div style="max-width: 1200px; margin: auto; margin-bottom: 100px;">
+    <h2 style="color: #004d40; font-size: 2.5rem; text-align: center; margin-bottom: 50px;">Did You Know?</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
+      <div style="background: #ffffff; padding: 30px; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">♟️ Chess is over 1500 years old!</div>
+      <div style="background: #e8f5e9; padding: 30px; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">♞ The longest game can go up to 5,949 moves!</div>
+      <div style="background: #fff3e0; padding: 30px; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">♚ There are more possible chess games than atoms in the universe.</div>
+      <div style="background: #ffebee; padding: 30px; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">♜ The word "Checkmate" comes from Persian "Shah Mat" meaning "The King is Dead".</div>
+    </div>
+  </div>
+
+</section>
+<!-- Sign Up Section -->
+<section id="signup" style="
+  background: linear-gradient(135deg, #b2ebf2, #80deea);
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-radius: 30px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  max-width: 700px;
+  margin: 50px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+">
+
+    <h2 style="
+      font-size: 2.5rem;
+      color: #004d40;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    ">Sign Up for the Chess Club</h2>
+
+    <form id="signup-form" class="signup-form" style="
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+      max-width: 400px;
+    ">
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email Address" required>
+        <input type="text" placeholder="Grade/Class" required>
+        <button type="submit">Join the Club</button>
+    </form>
+
+    <!-- Feedback Section -->
+  <div id="feedback-msg" style="
+    margin-top: 20px;
+    padding: 15px 20px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 20px;
+    text-align: center;
+    font-weight: 600;
+    color: #fff;
+    background-color: #4caf50;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  ">Thank you for signing up! We will contact you soon.</div>
+</section>
+<script>
+  const form = document.getElementById("signup-form");
+  const feedback = document.getElementById("feedback-msg");
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault(); // Prevent page refresh
+    feedback.style.opacity = "1"; // Show feedback
+    form.reset(); // Clear the form
+
+    // Hide feedback after 5 seconds
+    setTimeout(() => {
+      feedback.style.opacity = "0";
+    }, 5000);
+  });
+</script>
+
+<style>
+    .signup-form button {
+        padding: 15px 0;
+        border-radius: 25px;
+        border: none;
+        background: linear-gradient(45deg, #004d40, #00796b);
+        color: #fff;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .signup-form button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        background: linear-gradient(45deg, #00796b, #004d40);
+    }
+    .signup-form input {
+        padding: 15px 20px;
+        border-radius: 15px;
+        border: none;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        font-size: 1rem;
+    }
+    .signup-form input:focus {
+        outline: none;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+</style>
+
+<footer>&copy; 2025 School Chess Club</footer>
+
+<script>
+// Function to show only one section at a time
+function showPage(pageId) {
+    const sections = ['home', 'learn', 'signup'];
+    sections.forEach(id => {
+        document.getElementById(id).style.display = (id === pageId) ? 'block' : 'none';
+    });
+}
+
+// Show Home section by default
+showPage('home');
+</script>
 
 </body>
 </html>
