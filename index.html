@@ -385,88 +385,103 @@ footer { background: #222; color: #fff; text-align: center; padding: 20px 0; mar
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 ">
 
-    <h2 style="
-      font-size: 2.5rem;
-      color: #004d40;
-      margin-bottom: 30px;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-    ">Sign Up for the Chess Club</h2>
+  <h2 style="
+    font-size: 2.5rem;
+    color: #004d40;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  ">Sign Up for the Chess Club</h2>
 
-    <form id="signup-form" class="signup-form" style="
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      width: 100%;
-      max-width: 400px;
-    ">
-        <input type="text" placeholder="Full Name" required>
-        <input type="email" placeholder="Email Address" required>
-        <input type="text" placeholder="Grade/Class" required>
-        <button type="submit">Join the Club</button>
-    </form>
-
-    <!-- Feedback Section -->
-  <div id="feedback-msg" style="
-    margin-top: 20px;
-    padding: 15px 20px;
+  <form id="signup-form" class="signup-form" style="
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     width: 100%;
     max-width: 400px;
-    border-radius: 20px;
-    text-align: center;
-    font-weight: 600;
-    color: #fff;
-    background-color: #4caf50;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    display: none;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-  ">Thank you for signing up! We will contact you soon.</div>
+  ">
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <input type="text" placeholder="Grade/Class" required>
+      <button type="submit">Join the Club</button>
+  </form>
+
+  <!-- Feedback Section -->
+  <div id="feedback-msg" class="feedback-msg">
+    Thank you for signing up! We will contact you soon.
+  </div>
 </section>
+
+<style>
+  .signup-form button {
+      padding: 15px 0;
+      border-radius: 25px;
+      border: none;
+      background: linear-gradient(45deg, #004d40, #00796b);
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+  .signup-form button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      background: linear-gradient(45deg, #00796b, #004d40);
+  }
+  .signup-form input {
+      padding: 15px 20px;
+      border-radius: 15px;
+      border: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      font-size: 1rem;
+  }
+  .signup-form input:focus {
+      outline: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+
+  /* Feedback Styling */
+  .feedback-msg {
+      margin-top: 20px;
+      padding: 15px 20px;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 20px;
+      text-align: center;
+      font-weight: 600;
+      color: #fff;
+      background-color: #4caf50;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      pointer-events: none;
+  }
+  .feedback-msg.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+  }
+</style>
+
 <script>
   const form = document.getElementById("signup-form");
   const feedback = document.getElementById("feedback-msg");
 
   form.addEventListener("submit", function(e){
-    e.preventDefault(); // Prevent page refresh
-    feedback.style.opacity = "1"; // Show feedback
-    form.reset(); // Clear the form
+    e.preventDefault(); 
 
-    // Hide feedback after 5 seconds
+    // Show feedback (smooth fade/slide in)
+    feedback.classList.add("show");
+
+    form.reset();
+
+    // Hide after 5 seconds
     setTimeout(() => {
-      feedback.style.opacity = "0";
+      feedback.classList.remove("show");
     }, 5000);
   });
 </script>
-
-<style>
-    .signup-form button {
-        padding: 15px 0;
-        border-radius: 25px;
-        border: none;
-        background: linear-gradient(45deg, #004d40, #00796b);
-        color: #fff;
-        font-size: 1.2rem;
-        cursor: pointer;
-        transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
-    .signup-form button:hover {
-        transform: scale(1.05);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        background: linear-gradient(45deg, #00796b, #004d40);
-    }
-    .signup-form input {
-        padding: 15px 20px;
-        border-radius: 15px;
-        border: none;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        font-size: 1rem;
-    }
-    .signup-form input:focus {
-        outline: none;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    }
-</style>
 <style>
   .signup-form button {
     /* existing styles */
